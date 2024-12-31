@@ -1,0 +1,3 @@
+[workspace]
+members = ["cmdline", "converter"]
+resolver = "2"

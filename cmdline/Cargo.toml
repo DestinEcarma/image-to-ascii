@@ -1,0 +1,9 @@
+[package]
+name = "cmdline"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+clap = { version = "4.5.23", features = ["derive"] }
+converter = { version = "0.1.0", path = "../converter" }
+image = "0.25.5"
