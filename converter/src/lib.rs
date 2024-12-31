@@ -19,24 +19,21 @@ pub fn convert(image: &Path, dimensions: (Option<u32>, Option<u32>)) -> Result<S
     match dimensions {
         (Some(w), Some(h)) => {
             image = image.resize(w, h, image::imageops::FilterType::Nearest);
-            width = w;
-            height = h;
+            (width, height) = image.dimensions();
         }
         (Some(w), None) => {
             let ratio = w as f32 / width as f32;
             let h = (height as f32 * ratio).round() as u32;
 
             image = image.resize(w, h, image::imageops::FilterType::Nearest);
-            width = w;
-            height = h;
+            (width, height) = image.dimensions();
         }
         (None, Some(h)) => {
             let ratio = h as f32 / height as f32;
             let w = (width as f32 * ratio).round() as u32;
 
             image = image.resize(w, h, image::imageops::FilterType::Nearest);
-            width = w;
-            height = h;
+            (width, height) = image.dimensions();
         }
         _ => (),
     }
